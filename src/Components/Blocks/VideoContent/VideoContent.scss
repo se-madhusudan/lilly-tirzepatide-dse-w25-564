@@ -1,5 +1,5 @@
 .videoContent {
-  display: flex;
+  display: flex !important; //to overwrite the slick slide property
   vertical-align: center;
 
   &__left {

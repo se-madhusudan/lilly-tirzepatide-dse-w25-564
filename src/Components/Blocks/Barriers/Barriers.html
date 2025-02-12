@@ -21,15 +21,15 @@
 
         <div class="slider">
             <div class="slider__topWrapper">
-                <div class="slider__topWrapper--prev">
+                <div class="slider__topWrapper--prev" @click="showPrevious">
                     <img src="@/Assets/Img/icons/left-arrow-icon.svg" alt="icon">
                 </div>
-                <div class="slider__topWrapper--next">
+                <div class="slider__topWrapper--next" @click="showNext">
                     <img src="@/Assets/Img/icons/right-arrow-icon.svg" alt="icon">
                 </div>
             </div>
             <div class="slider__contentWrapper">
-              <VueSlickCarousel>
+              <VueSlickCarousel :arrows="false" :dots="false" :infinite="true" ref="carousel">
                 <VideoContent v-for="(data, index) in videoData" :videoData="data" />
               </VueSlickCarousel>
             </div>

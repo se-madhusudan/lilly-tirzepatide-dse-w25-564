@@ -60,7 +60,16 @@
           }
         ]
       }
-    }
+    },
+
+    methods: {
+      showNext() {
+        this.$refs.carousel.next()
+      },
+      showPrevious() {
+        this.$refs.carousel.prev()
+      }
+    },
   }
 </script>
 
