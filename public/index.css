@@ -1,0 +1,54 @@
+
+      #preloader-pane {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        padding: 0;
+        margin: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        background-color: #ffffff;
+        z-index: 999999;
+        transition: opacity 0.7s linear;
+        opacity: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .preloader-wrap {
+        width: 250px;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+      }
+
+      .pre_dot {
+        position: relative;
+        margin: 0 auto;
+        width: 100px;
+        height: 100px;
+      }
+
+      @media only screen and (max-width: 1024px) {
+        .pre_dot {
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      .preloadMe {
+        width: 1px;
+        height: 1px;
+        position: absolute;
+        top: -1px;
+        left: -1px;
+      }
+
+      .preloadHide {
+        opacity: 0 !important;
+      }

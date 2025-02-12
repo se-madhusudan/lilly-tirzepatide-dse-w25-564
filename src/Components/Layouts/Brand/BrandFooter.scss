@@ -1,0 +1,126 @@
+
+.brandFooter {
+  background: $white;
+
+  &__upperContent {
+    padding: 24px 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    @include media('>=phone'){
+      flex-direction: row;
+
+    }
+    @include media('>tablet') {
+      padding: 32px 0;
+    }
+    p {
+      color: $bodyCopy;
+      font-size: $fontSize16;
+      line-height: $lineHeight135;
+      &:last-child{
+        margin-top: 2px;
+      }
+    }
+    .upperLeft{
+      margin-bottom: 20px;
+      @include media('>=phone'){
+        margin-right: 40px;
+        margin-bottom: 0;
+      }
+      @include media('>tablet') {
+        margin-right: 50px;
+      }
+      img{
+        display: block;
+        width: 122px;
+        height: 59px;
+      }
+    }
+    .upperRight{
+      text-align: center;
+      @include media('>=phone'){
+        text-align: left;
+      }
+    }
+  }
+
+  &__disclaimer {
+    border-top: 1px solid $bdr;
+    padding: 24px 0;
+    text-align: center;
+    @include media('>=phone'){
+      margin: 0;
+      text-align: left;
+    }
+    @include media('>tablet') {
+      padding: 32px 0;
+      margin: 0;
+    }
+    p {
+      color: $bodyCopy;
+      font-size: $fontSize15;
+      line-height: $lineHeight23;
+      @include media('>tablet'){
+        font-size: $fontSize16;
+      }
+    }
+  }
+
+  &__lowerContent {
+    display: flex;
+    padding: 10px 0;
+    font-size: $fontSize14;
+    line-height: $lineHeight140;
+    flex-direction: column-reverse;
+    align-items: center;
+    @include media('>=phone') {
+      flex-direction: row;
+      padding: 10px 20px;
+    }
+
+    p {
+      color: $black;
+      font-size: $fontSize14;
+      line-height: $lineHeight120;
+      font-weight: $fontWeightNormal;
+    }
+
+    a {
+     margin: 0 9px;
+      color: $black;
+      display: inline-block;
+      font-size: $fontSize14;
+      text-underline-offset: 3px;
+      line-height: $lineHeight120;
+      font-weight: $fontWeightNormal;
+
+      &:hover {
+        text-decoration: none;
+      }
+      @include media('>=phone'){
+        margin: 0 0 0 30px;
+      }
+    }   
+
+    .bottomLinks {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 8px;
+
+      @include media('>=phone') {
+        display: block;
+        margin-bottom: 0;
+      }
+    }
+
+    @include media('<=phone') {
+      text-align: center;
+    }
+  }
+
+  &__lower {
+    border-top: solid 1px $bdr;
+    background: $white;
+  }
+}

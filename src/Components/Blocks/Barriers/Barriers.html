@@ -1,0 +1,52 @@
+<div class="barriers" id="Barriers">
+  <div class="contentWrap">
+    <Info :infoData="infoData" />
+    <div class="weightQuote">
+      <div class="weightQuote__loss">
+        <img class="weightQuote__loss--image" src="@/Assets/Img/Barriers/weight-icon.svg" alt="icon" />
+        <p class="weightQuote__loss--text">
+          As little as <span class="semi-bold">3%</span> weight loss is associated with metabolic adaptation, which results in a tendency toward weight regain.<sup>19,20,22,23</sup>
+        </p>
+      </div>
+      <div class="weightQuote__gain">
+        <img class="weightQuote__gain--image" src="@/Assets/Img/Barriers/rx-icon.svg" alt="icon" />
+        <p class="weightQuote__gain--text">
+          Studies have also shown that some antihyperglycemic agents may be associated with weight gain.<sup>14,24</sup>
+        </p>
+      </div>
+    </div>
+    <div class="contentWrap">
+        <CallOut :callOutText="callOutContent" :maxWidth="maxWidth" />
+        <p class="left">Having conversations about weight to support T2D management can be another barrier for both HCPs and patients. But these conversations are important because weight management may support glycemic control and facilitate more comprehensive diabetes care.</p>
+
+        <div class="slider">
+            <div class="slider__topWrapper">
+                <div class="slider__topWrapper--prev">
+                    <img src="@/Assets/Img/icons/left-arrow-icon.svg" alt="icon">
+                </div>
+                <div class="slider__topWrapper--next">
+                    <img src="@/Assets/Img/icons/right-arrow-icon.svg" alt="icon">
+                </div>
+            </div>
+            <div class="slider__contentWrapper">
+              <VueSlickCarousel>
+                <VideoContent v-for="(data, index) in videoData" :videoData="data" />
+              </VueSlickCarousel>
+            </div>
+            <div class="slider__bottomWrapper">
+               <div class="slider__line--active">
+                &nbsp;
+               </div>
+               <div class="slider__line">
+                &nbsp;
+               </div>
+               <div class="slider__line">
+                &nbsp;
+               </div>
+            </div>
+        </div>
+
+        <p class="footnote">T2D, type 2 diabetes.</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+
+VERSION=0.0.1
+CMD=${0##*/}
+
+####
+# Require the export-core common code from
+# the same path as the running script
+#
+BINDIR=$(dirname ${0})
+CORE=${BINDIR}/core
+. ${CORE}
+
+function deploymentManager () {
+	if [ ! -z "${S3_BUCKET}" ];then
+		deployAWS
+	elif [ ! -z "${SSH_HOST}" ];then
+		deploySSH
+	else
+		echo "Unable to find either S3 bucket or SSH configuration data. Please check your CICD configuration."
+		echo "Please refer to the guide or HM CICD Plumber documentation for more details."
+
+	fi
+}
+
+function deployAWS () {
+	if [ -z "${BRANCH}" ];then
+		${BINDIR}/deployAWS
+	else
+		${BINDIR}/deployAWS -b ${BRANCH}
+	fi
+}
+
+function deploySSH () {
+	if [ -z "${BRANCH}" ];then
+		${BINDIR}/deploySSH
+	else
+		${BINDIR}/deploySSH -b ${BRANCH}
+	fi
+}
+
+
+# Main
+
+# Process CLI options
+while getopts ":hb:cglpqt:" opt; do
+	case ${opt} in
+		h )
+		 helpMsg
+		;;
+		b )
+			BRANCH=$OPTARG
+		;;
+		c )
+			CLEANUP=true
+		;;
+		g )
+			GITLAB=true
+		;;
+		l )
+			LOCAL=true
+		;;
+		p )
+			GITPUSH=true
+		;;
+		q )
+			QUIET=true
+		;;
+		t )
+			TARGET=$OPTARG
+		;;
+		: )
+			echo "Option -$OPTARG requires and argument (dev || staging || production)."
+			exit 1
+		;;
+		\? )
+			echo "Invalid Option: -$OPTARG" 1>&2
+			exit 1
+		;;
+		: )
+		 helpMsg
+		;;
+		* )
+		 helpMsg
+		;;
+	esac
+done
+shift $((OPTIND -1))
+
+#verifyBranch
+deploymentManager
+
+

@@ -1,0 +1,91 @@
+# editorconfig.org
+
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.cfg] 
+indent_style = space 
+indent_size = 2
+
+[*.php]
+indent_size = 4
+trim_trailing_whitespace = true
+end_of_line = lf
+insert_final_newline = true
+
+[*.{css,scss,sass}]
+indent_style = space
+indent_size = 2 
+end_of_line = lf
+trim_trailing_whitespace = true
+
+[*.js]
+indent_style = space 
+indent_size = 2
+end_of_line = lf
+trim_trailing_whitespace = true
+
+[*.json]
+indent_style = space 
+indent_size = 2 
+end_of_line = lf
+trim_trailing_whitespace = true
+
+[*.sh]
+indent_style = space 
+indent_size = 2 
+end_of_line = lf
+trim_trailing_whitespace = true
+
+[*.sql] 
+indent_style = space 
+indent_size = 2 
+end_of_line = lf 
+charset = utf-8 
+rim_trailing_whitespace = true
+
+[*.svg]
+end_of_line = crlf
+
+[*.md]
+indent_style = space 
+indent_size = 2 
+end_of_line = lf 
+charset = utf-8 
+trim_trailing_whitespace = true 
+
+[*.ts]
+indent_style = space 
+indent_size = 2 
+end_of_line = lf 
+charset = utf-8 
+trim_trailing_whitespace = true 
+
+[*.vue] 
+indent_style = space 
+indent_size = 2 
+end_of_line = lf 
+charset = utf-8 
+rim_trailing_whitespace = true
+
+[*.xml] 
+indent_style = space 
+indent_size = 2 
+end_of_line = lf 
+charset = utf-8 
+rim_trailing_whitespace = true
+
+[*.yaml] 
+indent_style = space 
+indent_size = 2 
+end_of_line = lf 
+charset = utf-8 
+rim_trailing_whitespace = true
+

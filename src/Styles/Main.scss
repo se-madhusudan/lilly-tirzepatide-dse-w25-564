@@ -1,0 +1,145 @@
+@import "~normalize-scss/sass/_normalize.scss";
+@import "Base/_base";
+@import "Base/_typography";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-size: $fontSize14;
+  line-height: $lineHeight22;
+  margin: 0;
+  font-family: $rootFontFamily;
+  font-weight: 400;
+  scroll-behavior: smooth;
+  color: $bodyCopy;
+
+  @include media('>=tablet') {
+    font-size: $fontSize15;
+    line-height: $lineHeight23;
+  }
+}
+
+strong {
+  font-weight: $fontWeightBold;
+}
+
+body {
+  -ms-overflow-style: auto; // IE 10+
+  scrollbar-width: none; // Firefox
+  background: $white;
+}
+
+.screentest * {
+  transition: none;
+  animation: none;
+}
+
+#app {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.main-wrapp {
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  box-sizing: content-box;
+  overflow: hidden;
+  padding-top: 76px;
+  max-width: 1440px;
+
+  @include media ('>tablet') {
+    padding-top: 100px;
+  }
+
+  @include media('>bigTablet'){
+    padding-top: 117px;
+  }
+
+  @include media ('>mediumDesktop') {
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, .04), 0 8px 16px 0 rgba(0, 0, 0, .08);
+  }
+}
+
+.body {
+  @include media("<tablet") {
+    padding-right: 0;
+  }
+}
+
+i {
+  font-style: italic;
+  font-family: $rootFontFamilyItalic;
+}
+
+b {
+  font-weight: $fontWeightBold;
+}
+
+button,
+a,
+.logo {
+  -webkit-tap-highlight-color: transparent;
+}
+
+sup {
+  font-size: 60%;
+  vertical-align: super;
+  line-height: 1;
+  
+&.sup-80{
+  font-size: 80%;
+  line-height: 1.3;
+  vertical-align: top;
+}
+}
+.contentWrap {
+  padding: 0 16px;
+  margin: 0 auto;
+  @include media ('>=phone', '<=bigTablet') {
+    padding: 0 32px;
+  }
+
+  @include media ('>bigTablet') {
+    max-width: 1120px;
+    padding: 0;
+  }
+}
+
+.text-noWrap {
+  white-space: noWrap;
+}
+
+.pageWrapper {
+  position: relative;
+}
+
+.footnote {
+  color: $bodyCopy;
+  font-size:  $fontSize12;
+  font-weight: $fontWeightNormal;
+  line-height: $lineHeight140;
+  margin: 20px auto 48px auto;
+}

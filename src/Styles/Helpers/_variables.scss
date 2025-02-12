@@ -1,0 +1,109 @@
+$breakpoints: (
+  "iphonePhone": 391px,
+  "bigTablet": 1200px,
+  "smallDesktop": 1366px,
+  "mediumDesktop": 1440px,
+  "largeDesktop": 1600px,
+  "verySmallPhone" : 390px,
+  "iphonePhoneSE" : 376px,
+  "isiPhone": 429px,
+  "smallPhone": 575px,
+  "phone": 768px,
+  "tablet": 1024px,
+  "desktop": 1366px,
+  "xlargeDesktop": 1920px,
+  "extralargeDesktop": 2560px,
+  "bigTabletMedium": 1250px,
+);
+
+$mainWrapper: 1440px;
+$rootFontFamily: "Inter", sans-serif;
+$rootFontFamilyItalic: "Inter Tight", sans-serif;
+
+$fontWeightLight: 300;
+$fontWeightNormal: 400;
+$fontWeightMedium: 500;
+$fontWeightSemiBold: 600;
+$fontWeightBold: 700;
+$fontWeightExtraBold: 800;
+$fontWeightBlack: 900;
+
+$fontSize9: 9px;
+$fontSize10: 10px;
+$fontSize12: 12px;
+$fontSize14: 14px;
+$fontSize15: 15px;
+$fontSize16: 16px;
+$fontSize17: 17px;
+$fontSize18: 18px;
+$fontSize20: 20px;
+$fontSize22: 22px;
+$fontSize24: 24px;
+$fontSize25: 25px;
+$fontSize26: 26px;
+$fontSize28: 28px;
+$fontSize30: 30px;
+$fontSize32: 32px;
+$fontSize34: 34px;
+$fontSize35: 35px;
+$fontSize48: 48px;
+$fontSize55: 55px;
+
+$lineHeight14: 14px;
+$lineHeight15: 15px;
+$lineHeight18: 18px;
+$lineHeight22: 22px;
+$lineHeight23: 23px;
+$lineHeight24: 24px;
+$lineHeight33: 33px;
+$lineHeight36: 36px;
+$lineHeight100: 100%;
+$lineHeight120: 120%;
+$lineHeight130: 130%;
+$lineHeight135: 135%;
+$lineHeight140: 140%;
+$lineHeight145: 145%;
+$lineHeight150: 150%;
+
+$white: #ffffff;
+$black: #000000;
+$bodyCopy: #212121;
+$primaryColor: #E1251B;
+$primaryColorAlpha07: #FEC8C8;
+$secondaryColor: #ABABAB;
+$acentColor: #FA4747;
+$lightGray: #f3f3f3;
+$lightGray2: #E6F2DF;
+$blueColor: #006EAD;
+$gradient1: linear-gradient(90deg, #E8F4E4 0%, #FFF 48.5%, #EDF2F3 100%);
+$gradient2: linear-gradient(90deg, #2C6D3C 0%, #6CC04A 100%);
+$lightGrayAlt2: #f5f5f5;
+$lightGrayAlt3: #ECEFF0;
+$blackOpacity: rgba(0, 0, 0, 0.10);
+$blackOpacity4: rgba(0, 0, 0, 0.04);
+$blackOpacity6: rgba(0, 0, 0, 0.06);
+$blackOpacity16: rgba(0, 0, 0, 0.16);
+$whiteOpacity: rgba(255, 255, 255, 0.50);
+$whiteOpacity2: rgba(255, 255, 255, 0.20);
+$textShadow: 0px 4px 4px rgba(0, 0, 0, 0.22);
+$boxShadow:  0px 0px 4px 0px rgba(0, 0, 0, 0.04), 0px 8px 16px 0px rgba(0, 0, 0, 0.08);
+
+$grayBG: #F7F7F7;
+$bodyCopyAlt: #212224;
+$blackAlt: #4D4D4F;
+$blackAlt2:  #58595B;
+$greyAlt2: #D8D8D8;
+$bodyCopyAlt3: #2B2B2B;
+$lightGray: #f3f3f3;
+$grey: #C3C2D1;
+$greyAlt: #C5C5C5;
+$lightGrayAlt: #f2f2f2;
+$bdr: #BDBDBD;
+$isiBodyCopy: rgba(22, 22, 22, 0.80);
+$diclaimerText: rgba(17, 17, 17, 0.80);
+$isiBorder: #49A942;
+$footerLinks: #111111;
+$graphBg: #F6FBF6;
+$logoBdr: #E8E8E8;
+$chartBg: #FDD3D1;
+$blackAlpha75: rgba(0, 0, 0, 0.75);

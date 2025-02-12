@@ -1,0 +1,221 @@
+#!/usr/bin/env bash
+
+
+function default () {
+cat << EOF
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="msapplication-TileColor" content="#2d89ef" />
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <title>Site no longer available</title>
+  </head>
+  <body>
+    <div class="timer" onload="timer(1800)">
+      <p>The content you were looking for is no longer available, you will now be redirected to <span id ="name"></span><br/><strong> in <span id="time">00.20</span> seconds</strong>
+      </div></p>
+    <style>
+      .timer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 100vh;
+        
+    font-size: 28px;
+    max-width: 768px;
+    margin: 0 auto;
+      }
+    </style>
+    <script>
+      var time = 20;
+      var link = "https://" + window.location.host;
+      document.getElementById("name").innerHTML = window.location.host;
+      setInterval(function() {
+        var seconds = time % 60;
+        var minutes = (time - seconds) / 60;
+        if (seconds.toString().length == 1) {
+          seconds = "0" + seconds;
+        }
+        if (minutes.toString().length == 1) {
+          minutes = "0" + minutes;
+        }
+        document.getElementById("time").innerHTML = minutes + ":" + seconds;
+        time--;
+        if (time == 0) {
+          window.location.href = link;
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
+EOF
+}
+
+function prihcs ()  {
+cat << EOF
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="msapplication-TileColor" content="#2d89ef" />
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <title>Site no longer available</title>
+  </head>
+  <body>
+    <div class="timer" onload="timer(1800)">
+      <p>The content you were looking for is no longer available, you will now be redirected to https://www.prihcs.com/<br/><strong> in <span id="time">00.20</span> seconds</strong>
+      </div></p>
+    <style>
+      .timer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 100vh;
+        
+    font-size: 28px;
+    max-width: 768px;
+    margin: 0 auto;
+      }
+    </style>
+    <script>
+      var time = 20;
+      var link = "https://www.prihcs.com/";
+      setInterval(function() {
+        var seconds = time % 60;
+        var minutes = (time - seconds) / 60;
+        if (seconds.toString().length == 1) {
+          seconds = "0" + seconds;
+        }
+        if (minutes.toString().length == 1) {
+          minutes = "0" + minutes;
+        }
+        document.getElementById("time").innerHTML = minutes + ":" + seconds;
+        time--;
+        if (time == 0) {
+          window.location.href = link;
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
+EOF
+}
+
+function simple () {
+cat << EOF
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="msapplication-TileColor" content="#2d89ef" />
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Site no longer available</title>
+</head>
+<body>
+    <div class="timer">
+        <p>The content you were looking for is no longer available.</p>
+    </div>
+    <style>
+        .timer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+            font-size: 28px;
+            max-width: 768px;
+            margin: 0 auto;
+        }
+    </style>
+</body>
+</html>
+EOF
+}
+
+function cleanupDest () {
+    if [ -e ${DEST} ];then 
+        rm -rf ${DEST}
+    fi
+}
+
+####
+# Make local destination directory
+#
+function makeDest () {
+    if [ -z "${S3_BUCKET}" ] || [ -z "${SSH_PRIVATE_KEY}" ];then
+        # Local testing
+        DEST=bu-dist
+        cleanupDest
+        mkdir ${DEST}
+    else
+        DEST=dist
+        cleanupDest
+        mkdir ${DEST}
+    fi
+}
+
+function main () {
+    if [ -z "${EXPIRATION}" ];then
+        makeDest
+        default > ${DEST}/index.html
+        #echo "Expiration is not set."
+    elif [ "${EXPIRATION}" = "prihcs"  ];then
+        makeDest
+        prihcs > ${DEST}/index.html
+    elif [ "${EXPIRATION}" = "simple"  ];then
+        makeDest
+        simple > ${DEST}/index.html
+    elif [ "${EXPIRATION}" = "custom"  ];then
+        # This will require more testing
+        if [ -e custom-expired-index.html ];then
+            makeDest
+            cat custom-expired-index.html > ${DEST}/index.html
+        fi
+    fi
+}
+
+
+# Main
+
+# Process CLI options
+while getopts ":ht:" opt; do
+    case ${opt} in
+        h )
+            helpMsg
+        ;;
+        t )
+            TARGET=$OPTARG
+        ;;
+        : )
+            echo "Option -$OPTARG requires and argument (dev || staging || production)."
+            exit 1
+        ;;
+        \? )
+            echo "Invalid Option: -$OPTARG" 1>&2
+            exit 1
+        ;;
+        : )
+         helpMsg
+        ;;
+        * )
+         helpMsg
+        ;;
+    esac
+done
+shift $((OPTIND -1))
+
+main

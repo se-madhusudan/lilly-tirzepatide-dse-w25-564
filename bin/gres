@@ -1,0 +1,25 @@
+#!/bin/sh
+
+if [ $# -lt "3" ]
+then
+	echo Usage: gres pattern replacement file
+	exit 1
+fi
+
+PATTERN=$1
+REPLACEMENT=$2
+
+if [ -f $3 ]
+then
+	FILE=$3
+else
+	echo $3 is not a file.
+	exit 1
+fi
+
+A="`echo | tr '\012' '\001' `"
+
+sed -e "s$A$PATTERN$A$REPLACEMENT$A" $FILE >/tmp/$FILE.tmp
+
+cp /tmp/$FILE.tmp $FILE
+rm /tmp/$FILE.tmp

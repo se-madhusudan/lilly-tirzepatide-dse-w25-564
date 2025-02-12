@@ -1,0 +1,120 @@
+#!/usr/bin/env bash
+
+VERSION=0.0.1
+
+####
+# Require the export-core common code from
+# the same path as the running script
+#
+BINDIR=$(dirname ${0})
+CORE=${BINDIR}/core
+. ${CORE}
+
+OUTCORE=${BINDIR}/outputCore
+. ${OUTCORE}
+
+# Need to experiment with the delete options
+# old OPTIONS="--partial --append --stats --delete -avzrp"
+OPTIONS="--partial --stats -avzrpq"
+EXCLUSIONS="--exclude-from=etc/rsync/exclusions"
+PLUGIN_EXCLUSIONS="--exclude-from=etc/rsync/plugin-exclusions"
+
+function displaySysInfo() {
+    echo $VERSION
+
+    echo $BINDIR
+
+    echo $S3_BUCKET/$PROJECT_PATH/${DEST}
+}
+
+function listStuff() {
+    aws s3 ls s3://$S3_BUCKET/$PROJECT_PATH/${DEST} --recursive --human-readable --summarize
+}
+
+function shipStuff() {
+    if [ "${BRANCH}" = "banners" ] || [ "${BRANCH}" = "emails" ]; then
+        DIST_FOLDER=${BRANCH}/${DIST_FOLDER}
+    fi
+    if [ -e ${DIST_FOLDER} ];then
+        pushd "${DIST_FOLDER}" || exit 1
+        getDest
+        debugOutput "Shipping to" $S3_BUCKET/$PROJECT_PATH/${DEST}
+        aws s3 sync . s3://$S3_BUCKET/$PROJECT_PATH/${DEST}
+        echo
+        popd || exit 1
+    fi
+}
+
+function installCXTag() {
+    infoOutput "Setting the CX Tag."
+    ${BINDIR}/set-cxtag
+}
+
+####
+# Need to add more HELP details and use a HEREDOC; but for now...
+function helpMsg() {
+    CMD=${0##*/}
+	echo "Usage: ${CMD} -c -t (production|staging|dev)"
+	echo "EXAMPLES:"
+	echo "CleanUp Dev Build: ${CMD} -c -t dev"
+	echo "Standard Dev Build: ${CMD} -t dev"
+	echo "Build using GitLab runner: ${CMD} -c -t -g dev"
+	echo "Force deploy using WPE's git push: ${CMD} -c -t -g -p dev"
+	exit 1
+}
+
+# Main
+
+# Process CLI options
+while getopts ":hb:cglpqt:" opt; do
+    case ${opt} in
+        h )
+         helpMsg
+        ;;
+        b )
+            BRANCH=$OPTARG
+        ;;
+        c )
+            CLEANUP=true
+        ;;
+        g )
+            GITLAB=true
+        ;;
+        l )
+            LOCAL=true
+        ;;
+        p )
+            GITPUSH=true
+        ;;
+        q )
+            QUIET=true
+        ;;
+        t )
+            TARGET=$OPTARG
+        ;;
+        : )
+            echo "Option -$OPTARG requires and argument (dev || staging || production)."
+            exit 1
+        ;;
+        \? )
+            echo "Invalid Option: -$OPTARG" 1>&2
+            exit 1
+        ;;
+        : )
+         helpMsg
+        ;;
+        * )
+         helpMsg
+        ;;
+    esac
+done
+shift $((OPTIND -1))
+verifyDebugging
+verifyBranch
+getDest
+#displaySysInfo
+
+#installCXTag
+
+shipStuff
+listStuff

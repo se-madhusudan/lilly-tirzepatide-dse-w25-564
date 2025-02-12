@@ -1,0 +1,53 @@
+.heroSection {
+    max-width: $mainWrapper;
+    height: 745px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+    padding: 190px 0;
+
+    &__content {
+        max-width: 725px;
+    }
+
+    &__title {
+        font-size: $fontSize48;
+        color: $white;
+        margin-bottom: 60px;
+        font-weight: $fontWeightBold;
+        line-height: normal;
+        position: relative;
+        padding-bottom: 40px;
+
+        &::after {
+            content: '';
+            width: 191px;
+            height: 5px;
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            background-color: $primaryColor;
+        }
+    }
+
+    &__des {
+        font-size: $fontSize24;
+        color: $white;
+        font-weight: $fontWeightSemiBold;
+        line-height: $lineHeight135;
+    }
+
+    span {
+        position: absolute;
+        bottom: 26px;
+        right: 49%;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+    }
+    span:hover {
+        filter: brightness(0) saturate(100%) invert(21%) sepia(92%) saturate(2594%) hue-rotate(359deg) brightness(105%) contrast(81%);
+    }
+    
+}

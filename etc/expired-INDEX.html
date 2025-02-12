@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="msapplication-TileColor" content="#2d89ef" />
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+    <!-- Begin Oracle Infinity Tag -->
+    <script async type="text/javascript" src="https://d.oracleinfinity.io/infy/acs/account/63aeeb6470e44a09fe5c5e9427c00dff/js/CXTAG"></script>
+    <!-- End Oracle Infinity Tag -->
+    <title>Site no longer available</title>
+  </head>
+  <body>
+    <div class="timer" onload="timer(1800)">
+      <p>The content you were looking for is no longer available, you will now be redirected to EXPIRED-SITE.<br/><strong> in <span id="time">00.20</span> seconds</strong></p>
+      </div>
+    <style>
+      .timer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 100vh;
+        
+    font-size: 28px;
+    max-width: 768px;
+    margin: 0 auto;
+      }
+    </style>
+    <script>
+      var time = 20;
+	  var link = "https://www.cancertherapyadvisor.com/";
+      setInterval(function() {
+        var seconds = time % 60;
+        var minutes = (time - seconds) / 60;
+        if (seconds.toString().length == 1) {
+          seconds = "0" + seconds;
+        }
+        if (minutes.toString().length == 1) {
+          minutes = "0" + minutes;
+        }
+        document.getElementById("time").innerHTML = minutes + ":" + seconds;
+        time--;
+        if (time == 0) {
+          window.location.href = link;
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>

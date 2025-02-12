@@ -1,0 +1,9 @@
+<div class="heroSection" :style="{backgroundImage: `url(${heroData.bgImage})`}">
+    <div class="contentWrap">
+        <div class="heroSection__content">
+            <h1 class="heroSection__title" v-html="heroData.title"></h1>
+            <p class="heroSection__des" v-html="heroData.des"></p>
+        </div>
+    </div>
+    <span @click="scrollToSection('Matters')"><img src="@/Assets/Img/icons/down-arrow-icon.svg" alt="icon"></span>
+</div>

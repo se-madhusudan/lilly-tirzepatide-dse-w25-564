@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+
+VERSION=0.0.1
+CMD=${0##*/}
+CLEANUP=false
+UPGRADE=true
+
+####
+# Require the export-core common code from
+# the same path as the running script
+#
+BDIR=$(dirname ${0})
+CORE=${BDIR}/core
+. ${CORE}
+
+####
+# Attempt to prevent someone from clobbering the source repo
+#
+function sanityCheck () {
+    if [ "${CDIR}" = "${PDIR}/${SRC_REPO}" ]; then
+        cat <<- MSG
+        Danger! Danger, Will Robinson!
+        Aborting the sequence.
+        The Current directory equals the destination directory.
+            ${CDIR} =  ${PDIR}/${SRC_REPO}"
+        
+MSG
+        exit 1
+    fi
+}
+
+function checkRelease () {
+    pushd "${PDIR}/${SRC_REPO}" &> /dev/null || exit 1
+    getLastRelease
+    popd &> /dev/null || exit 1
+}
+
+function updateCheck () {
+    if [ -e ${REVFILE} ]; then
+        . ${REVFILE}
+        if [ ${RELEASE_TAG} = ${REVISION} ]; then
+            UPGRADE=false
+            cat <<- MSG
+            
+            HM CICD PLumber version ${RELEASE_TAG} is the latest version available. 
+            There are no updates at this time.
+            
+MSG
+        exit 1
+        else
+            cat <<- MSG
+            Attempting to update to ${RELEASE_TAG} from ${REVISION}.
+            
+MSG
+        fi
+    fi
+}
+
+function validateSrc () {
+    if [ ! -d "../${SRC_REPO}" ]; then
+        cat <<- MSG
+        The srouce repository is missing. Please clone the source repo.
+        git clone https://gitlab.com/hm-devs/hmdev-s3 ${PDIR}/
+        
+MSG
+    exit 1
+    else
+        SRC_DIR="${PDIR}/${SRC_REPO}"
+    fi
+}
+
+function updatePipeline () {
+    echo "Updating HM CICD Plumber in this $( pwd ) project to version ${RELEASE_TAG}."
+    ${SYNC_CMD}
+    ${SYNC_CMD2}
+    echo "Installing the CICD config."
+    cp ../${SRC_REPO}/.gitlab-ci.yml .
+    echo "Installing the iggy file."
+    cp ../${SRC_REPO}/.gitignore .
+}
+
+# Main
+
+sanityCheck
+validateSrc
+checkRelease
+updateCheck
+validateSCMD
+debug
+updatePipeline
+setRevision
+cleanupDest

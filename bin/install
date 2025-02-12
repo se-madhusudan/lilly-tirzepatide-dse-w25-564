@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+VERSION=0.0.2
+CMD=${0##*/}
+
+####
+# Require the export-core common code from
+# the same path as the running script
+#
+BDIR=$(dirname ${0})
+CORE=${BDIR}/core
+. ${CORE}
+
+
+function executeInstaller () {
+    CREPO=$(basename "${CDIR}")
+    if [ "${SRC_REPO}" = "${CREPO}" ]; then
+        echo
+        echo "Operation canceled because the source and destination are the same."
+        echo
+        debug
+    else
+        if [ -d "../${SRC_REPO}" ]; then
+            pushd ../${SRC_REPO} &> /dev/null || exit 1
+            getLastRelease
+            popd &> /dev/null || exit 1
+            SRC_DIR=../${SRC_REPO}
+            echo "Installing HM CICD Plumber version ${RELEASE_TAG} into this $( pwd ) project."
+            validateSCMD
+            ${SYNC_CMD}
+            ${SYNC_CMD2}
+            echo "Installing the CICD config."
+            cp ../${SRC_REPO}/.gitlab-ci.yml .
+            echo "Installing the iggy file."
+            cp ../${SRC_REPO}/.gitignore .
+            setRevision
+            cleanupDest
+            echo
+            echo "Completed installing HM CICD Plumber version ${RELEASE_TAG} into this $( pwd ) project."
+            #DEBUG=true
+            debug
+        fi
+    fi
+
+}
+
+executeInstaller
+

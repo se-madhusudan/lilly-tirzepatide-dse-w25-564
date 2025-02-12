@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+VERSION=0.0.1
+
+####
+# Require the export-core common code from
+# the same path as the running script
+#
+BINDIR=$(dirname ${0})
+CORE=${BINDIR}/core
+. ${CORE}
+
+# Need to experiment with the delete options
+# old OPTIONS="--partial --append --stats --delete -avzrp"
+OPTIONS="--partial --stats -avzrpq"
+EXCLUSIONS="--exclude-from=etc/rsync/exclusions"
+PLUGIN_EXCLUSIONS="--exclude-from=etc/rsync/plugin-exclusions"
+
+function setupSSHKey() {
+    TEMPFILE=$(mktemp)
+    chmod 600 "$TEMPFILE" # ensure file is locked down
+    trap "rm \"$TEMPFILE\"" 0 2 3 15 # ensure tempfile cleanup in event of various signals
+    echo "$SSH_PRIVATE_KEY" >> $TEMPFILE
+}
+
+function displaySysInfo() {
+    echo $VERSION
+
+    echo $BINDIR
+
+    echo $TEMPFILE
+}
+
+function shipStuff() {
+    echo "Shipping nothing..."
+    ssh -p 11097 -o "StrictHostKeyChecking no" -i "$TEMPFILE"  $SSH_USER@$SSH_HOST  "ls -al"
+}
+
+####
+# Need to add more HELP details and use a HEREDOC; but for now...
+function helpMsg() {
+    CMD=${0##*/}
+	echo "Usage: ${CMD} -c -t (production|staging|dev)"
+	echo "EXAMPLES:"
+	echo "CleanUp Dev Build: ${CMD} -c -t dev"
+	echo "Standard Dev Build: ${CMD} -t dev"
+	echo "Build using GitLab runner: ${CMD} -c -t -g dev"
+	echo "Force deploy using WPE's git push: ${CMD} -c -t -g -p dev"
+	exit 1
+}
+
+# Main
+
+setupSSHKey
+
+shipStuff

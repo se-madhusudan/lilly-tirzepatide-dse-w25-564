@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+
+CMD=${0##*/}
+
+####
+# Require the export-core common code from
+# the same path as the running script
+#
+BDIR=$(dirname ${0})
+CORE=${BDIR}/core
+. ${CORE}
+
+####
+# Need to add more HELP details and use a HEREDOC; but for now...
+function helpMsg () {
+    cat <<- EOMSG
+    Usage: build -b (BRANCH)
+    The -b parameter allows for passing the branch identifier. This is NOT used on production builds.
+    EXAMPLES:
+        UAT Build: build -b princess
+        Prod Build: build -b princess
+    
+    Common Specifications: (REQUIRED)
+    
+    PROJECT_NAME - the name of the project example: s3-test-system
+    PROJECT_PATH - the apex domain of the project example: haymarketmediadev.com
+EOMSG
+    #exit 1
+}
+
+####
+# Need to add more HELP details and use a HEREDOC; but for now...
+function helpAWS () {
+    echo
+    cat <<- EOMSG
+    AWS Specifications:
+    
+    In order to deploy to an AWS S3 bucket you MUST setup the following additional CICD variables with the 
+    appropriate values. The following are examples only and not valid keys.
+    
+    AWS_ACCESS_KEY_ID - example: AKIADRXE3ZXJJULU2T6Q
+    AWS_REGION - example: us-east-1
+    AWS_SECRET_ACCESS_KEY - example: ++zpK857H42o0PY7+YfUTDN7tMe5BjpReOAT5dVW
+    S3_BUCKET - example: haymarket-test-static
+EOMSG
+    #exit 1
+}
+
+####
+# Need to add more HELP details and use a HEREDOC; but for now...
+function helpSSH () {
+    echo
+    cat <<- EOMSG
+    SSH Specifications:
+        
+    In order to deploy to a SSH project you MUST properly define the following additional CICD variables and values.
+    
+    SSH_HOST - the address of the server example: hathor.haymarketmediadev.com
+    SSH_KNOWN_HOSTS - the host signature to provide to the remote server for subsequent connections
+    SSH_PRIVATE_KEY - the pre-generated private SSH key
+    SSH_PUBLIC_KEY - the pre-generated public SSH key associated with the private noted above
+    SSH_USER - the user that owns the files deployed on the server example: seanconnery
+EOMSG
+    #exit 1
+}
+
+function helpFooter () {
+    echo
+    cat <<- EOMSG
+    Please make the necessary corrections and try again. Additional information may be found in the 
+    HM CICD Plumber repo:
+        https://gitlab.com/hm-devs/hm-cicd-plumber/
+    HM CICD Plumber documentation:
+        https://gitlab.com/hm-devs/hm-cicd-plumber/-/tree/root/docs/README.md
+    Engineering Team site:
+        https://www.haymarketmediadev.com/
+        
+EOMSG
+    exit 1
+}
+
+# Post install
+helpMsg
+helpAWS
+helpSSH
+helpFooter

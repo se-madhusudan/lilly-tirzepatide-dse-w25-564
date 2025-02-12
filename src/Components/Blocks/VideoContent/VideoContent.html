@@ -1,0 +1,16 @@
+<div class="videoContent">
+  <div class="videoContent__left">
+    <p class="videoContent__left--text" v-html="videoData.text"></p>
+    <ul>
+      <li v-for="(item, index) in videoData.li" :key="index" v-html="item"></li>
+    </ul>
+  </div>
+  <div class="videoContent__right">
+    <div class="videoContent__right--video">
+      <img :src="videoData.thumbnail" alt="video thumbnail" />
+    </div>
+    <div class="textContent">
+      <p class="videoContent__right--text" v-html="videoData.videoText"></p>
+    </div>
+  </div>
+</div>

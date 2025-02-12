@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+WORKDIR=dist
+FILE=index.html
+BWD=$( pwd )
+
+####
+# Require the export-core common code from
+# the same path as the running script
+# 2>&1 /dev/null
+#
+BINDIR=$(dirname ${0})
+CORE=${BINDIR}/core
+. ${CORE}
+
+OITF=${BINDIR}/oracle-infinity-tag-finder.php
+SITE_TAG=$( ${OITF} )
+GRES=${BWD}/bin/gres
+
+if [ -d "${WORKDIR}" ] && [ -f "${WORKDIR}/${FILE}" ]; then
+    pushd "${WORKDIR}" || exit 1
+    if [ -n "${SITE_TAG}" ];then
+        infoOutput "Setting Oracle Infinity CX tag in ${WORKDIR}/${FILE} to ${SITE_TAG}"
+        ${GRES} "CXTAG" "${SITE_TAG}" "${FILE}"
+        #grep "${SITE_TAG}" "${FILE}"
+    fi
+    popd || exit 1
+fi

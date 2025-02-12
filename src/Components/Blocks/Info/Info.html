@@ -1,0 +1,8 @@
+<div class="info">
+    <div class="info__title">
+        <img class="info__title--icon" :src="infoData.source" alt="icon">
+        <h2 class="info__title--text" v-html="infoData.title"></h2>
+    </div>
+    <p class="info__subTitle" v-html="infoData.subTitle"></p>
+    <p class="info__des" v-for="(item, index) in infoData.des" :key="index" v-html="item"></p>
+</div>

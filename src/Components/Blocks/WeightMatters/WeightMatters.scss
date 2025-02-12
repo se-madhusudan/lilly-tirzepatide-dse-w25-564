@@ -1,0 +1,54 @@
+.weightMatters {
+  background: $white;
+  padding: 60px 0 0;
+}
+
+.graphContainer {
+  width: 100%;
+  background-color: $black;
+  padding: 60px 20px;
+  margin: 60px 0;
+
+  .graphImage {
+    max-width: 1018px;
+    margin: 0 auto;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.contentWrap {
+  p.center {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    color: $bodyCopy;
+    font-size: $fontSize20;
+    font-weight: $fontWeightSemiBold;
+    line-height: $lineHeight145;
+    padding: 48px 0 36px;
+  }
+
+  .diseasePercent {
+    display: flex;
+
+    .container:first-of-type {
+      padding: 22px 0;
+      padding-right: 28px;
+      border-right: 1px solid $bdr;
+    }
+    .container:last-of-type {
+      padding: 22px 0;
+      padding-left: 28px;
+    }
+  }
+
+  .videoContainer {
+    background: $white;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.04), 0px 8px 16px 0px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+  }
+}

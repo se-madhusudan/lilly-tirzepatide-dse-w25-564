@@ -1,0 +1,184 @@
+#!/usr/bin/env bash
+
+VERSION=1.0.1
+####
+# @see https://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html
+#
+
+if [ -z ${DEBUG} ];then
+  DEBUG=false
+fi
+if [ -z ${QUIET} ];then
+  QUIET=false
+fi
+
+SRC_REPO="hm-cicd-plumber"
+SRC_DIR="."
+OPTIONS="--partial --stats -avzrpq"
+EXCLUDE="--exclude 'install'"
+DIST_FOLDER="dist"
+#BRANCH=$(git branch |awk '/\*/{print $2}')
+DEFAULT_DEST="custom/"
+PRODUCTION=true
+STAMP=$(date)           # starting time stamp
+CDIR=$( pwd )           # current working directory
+PDIR=$(dirname ${CDIR}) # parent directory one level above the current
+REVFILE="bin/.revision"
+
+####
+# This must be add to your executing script to include this core library
+####
+# Require the export-core common code from
+# the same path as the running script
+#
+#BDIR=$(dirname ${0})    # Bin directory relative to the script being executed
+#CORE=${BDIR}/core
+#. ${CORE}
+BINDIR=$(dirname ${0})
+OUTCORE=${BINDIR}/outputCore
+. ${OUTCORE}
+
+function turnOffOutput() {
+    set +x
+}
+
+function turnOnOutput() {
+    set -x
+}
+
+function output() {
+	if [ ${QUIET} = false ]; then
+        echo $1
+    fi
+}
+
+function version() {
+	if [ ${QUIET} = false ]; then
+        echo "Version: " ${VERSION}
+    fi
+}
+
+function verifyDebugging() {
+  if [ ${DEBUG} = true ] || [ ${DEBUG} = "true" ]; then
+    echo "Debugging on!"
+    DEBUG=true
+  else
+    echo "Debugging off!"
+  fi
+}
+function getLastRelease () {
+    RELEASE_TAG=$( git describe --abbrev=0 )
+}
+
+function setProjectType() {
+    if [ -n "${PROJECT_TYPE}" ];then
+        DEST=${DEST}${PROJECT_TYPE}/
+    fi
+
+    if [ "${BRANCH}" = "banners" ] || [ "${BRANCH}" = "emails" ]; then
+        DEST=${DEST}${BRANCH}/
+    fi
+}
+
+function verifySrcDir() {
+  if [ -n "${BRANCH}" ]; then
+    SRC_DIR=${SRC_DIR}/${BRANCH}
+  fi
+}
+
+#####
+# till working on this one
+#
+function isBannerOrEmail() {
+      if [ "${BRANCH}" = "banners" ] || [ "${BRANCH}" = "emails" ]; then
+          ALTNPM=true
+      fi
+}
+
+function setProjectName() {
+    if [ -n "${PROJECT_NAME}" ];then
+        DEST=${DEST}${PROJECT_NAME}/
+    fi
+}
+
+####
+# default to root, i.e. a production build/deployment
+#
+function verifyBranch() {
+    if [ -z "${BRANCH}" ];then
+#        BRANCH=$(git branch |awk '/\*/{print $2}')
+        BRANCH=root
+    fi
+}
+
+####
+# Adjust the destination path in accordance with the current build branch, project type and project name
+#
+function getDest() {
+    DEST="uat/"${DEFAULT_DEST}
+    PRODUCTION=false
+    if [ -z "${BRANCH}" ];then
+      BRANCH=$(git branch |awk '/\*/{print $2}')
+      DEST=${DEFAULT_DEST}
+    fi
+
+    if [ "${BRANCH}" = "root" ];then
+      DEST=${DEFAULT_DEST}
+      PRODUCTION=true
+    fi
+      
+    setProjectType
+    setProjectName
+}
+
+function debug () {
+    if [ ${DEBUG} = true ]; then
+        echo
+        echo "Debugging info:"
+        echo "Current directory: $CDIR"
+        echo "Parent directory: $PDIR"
+        echo "Bin directory: $BDIR"
+        if [ -n "${BRANCH}" ]; then
+            debugOutput "The branch" ${BRANCH}
+            echo
+        fi
+        if [ -n "${SRC_DIR}" ]; then
+            debugOutput "Source directory" ${SRC_DIR}
+            echo
+            verifyBuildComplete
+        fi
+        debugOutput "Sync command" ${SYNC_CMD}
+        echo
+        
+        DIR="$(dirname "${CDIR}")" ; FILE="$(basename "${CDIR}")"
+        debugOutput "Dir" $DIR
+        debugOutput "File" $FILE
+        debugOutput "Destination" ${DEST}
+        version
+    fi
+}
+
+function setRevision () {
+    echo "REVISION=${RELEASE_TAG}" > bin/.revision
+}
+
+function validateSCMD () {
+    infoOutput "The source path is: ${SRC_DIR}"
+    SCMD=$(which rsync) # retrieve the rsync command path if installed
+    if [ -z "${SCMD}" ]; then
+        SYNC_CMD="cp -r ${SRC_DIR}/bin ."
+        SYNC_CMD2="cp -r ${SRC_DIR}/etc ."
+        CLEANUP=true
+    else
+        SYNC_CMD="${SCMD} ${OPTIONS} ${EXCLUDE} ${SRC_DIR}/bin ."
+        SYNC_CMD2="${SCMD} ${OPTIONS} ${EXCLUDE} ${SRC_DIR}/etc ."
+    fi
+}
+
+function cleanupDest () {
+    # Safe cleanup may replace with rm
+    if [ -x "bin/install" ]; then
+        chmod -x bin/install
+    fi
+}
+

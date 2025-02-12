@@ -1,0 +1,79 @@
+stages:
+  - deploy 
+  
+cleanup_deploy_princess:
+  stage: deploy
+#  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+  image: haymarket/wp-cicd-build-env
+  environment:
+    name: "Save the Princess"
+  script:
+    - export ENVIRONMENT="uat"
+    - echo 
+    - echo "Testing Build"
+    - bin/build -b princess
+    - bin/set-cxtag
+    - echo 
+    - echo "Testing AWS connectivity"
+    - bin/deploy -b princess
+    - echo
+  only:
+    - princess
+#  when: manual # Must trigger deploy from the pipeline once everything passes
+
+
+cleanup_deploy_production:
+  stage: deploy
+#  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+  image: haymarket/wp-cicd-build-env
+  environment:
+    name: "PRODUCTION deployment"
+  script:
+    - export BRANCH=root
+    - export ENVIRONMENT="prod"
+    - echo 
+    - echo "Testing Build"
+    - bin/build
+    - bin/set-cxtag
+    - echo 
+    - echo "Testing AWS connectivity"
+    - bin/deployAWS
+    - echo
+  only:
+    - root
+  when: manual # Must trigger deploy from the pipeline once everything passes
+
+cleanup_deploy_banners:
+  stage: deploy
+  #  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+  image: $HM_CICD_IMAGE
+  environment:
+    name: "Banners"
+  script:
+    - export BRANCH=banners
+    - bin/build
+    - echo
+    - echo "Testing AWS connectivity"
+    - bin/deploy
+    - echo
+  only:
+    - banners
+#  when: manual # Must trigger deploy from the pipeline once everything passes
+
+cleanup_deploy_emails:
+  stage: deploy
+  #  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+  image: $HM_CICD_IMAGE
+  environment:
+    name: "Emails"
+  script:
+    - export BRANCH=emails
+    - bin/build -b emails
+    - echo
+    - echo "Testing AWS connectivity"
+    - bin/deploy -b emails
+    - echo
+  only:
+    - emails
+#  when: manual # Must trigger deploy from the pipeline once everything passes
+

@@ -1,0 +1,35 @@
+.info {
+    &__title {
+        display: flex;
+        align-items: center;
+
+        &--icon {
+            height: 60px;
+            width: 60px;
+            margin-right: 24px;
+        }
+
+        &--text {
+            color:  $primaryColor;
+            font-size:  $fontSize34;
+            font-weight: $fontWeightSemiBold;
+            line-height: $lineHeight120;
+        }
+    }
+
+    &__subTitle {
+        color:  $primaryColor;
+        font-size:  $fontSize24;
+        font-weight: $fontWeightMedium;
+        line-height: $lineHeight135;
+        margin: 60px auto 32px;
+    }
+
+    &__des {
+        color:  $bodyCopy;
+        font-size:  $fontSize18;
+        font-weight: $fontWeightMedium;
+        line-height: $lineHeight135;
+        margin-bottom: 28px;
+    }
+}

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+CDIR=$( pwd ) 
+
+####
+# Require the export-core common code from
+# the same path as the running script
+#
+BDIR=$(dirname ${0})    # Bin directory relative to the script being executed 
+CORE=${BDIR}/core
+. ${CORE}
+
+function versionCheck () {
+    if [ -e ${REVFILE} ]; then
+        . ${REVFILE}
+        echo
+        echo "HM Pipeline installed this ${CDIR} repository is version ${REVISION}"
+        echo
+    else
+        getLastRelease
+        echo
+        echo "The Current release of HM Pipeline project is version: ${RELEASE_TAG}"
+        echo "Project directory: ${CDIR}"
+        echo
+    fi
+}
+
+versionCheck

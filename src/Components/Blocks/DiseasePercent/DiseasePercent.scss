@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    align-items: center;
+    max-width: 531.5px;
+    gap: 24px;
+
+    p{
+        color: $bodyCopy;
+        font-size: $fontSize16;
+        font-weight: $fontWeightSemiBold;
+        line-height: $lineHeight135;
+    }
+}
