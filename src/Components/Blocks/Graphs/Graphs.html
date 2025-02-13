@@ -1,0 +1,6 @@
+<div class="graphContainer">
+    <div class="graph" v-for="(data, index) in graphData" :key="index">
+      <p v-html="data.heading"></p>
+      <img :src="data.image" alt="graph">
+    </div>
+</div>

@@ -144,6 +144,14 @@ sup {
   margin: 20px auto 48px auto;
 }
 
+.left {
+  color: $bodyCopy;
+  font-weight: $fontWeightMedium;
+  font-size: $fontSize20;
+  line-height: $lineHeight135;
+  margin: 60px auto 40px;
+}
+
 .slick-dots{
   display: flex !important;
   position: static;

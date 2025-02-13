@@ -1,0 +1,12 @@
+<div>
+    <div class="riskReduction">
+        <p v-html="riskReductionData.topText"></p>
+        <ul class="riskReduction__data">
+          <li class="dataContainer" v-for="(data, index) in riskReductionData.icons" :key="index">
+            <img :src="data" alt="lower risk data">
+          </li>
+        </ul>
+    </div>
+    <p class="left" v-html="riskReductionData.bottomText"></p>
+
+</div>

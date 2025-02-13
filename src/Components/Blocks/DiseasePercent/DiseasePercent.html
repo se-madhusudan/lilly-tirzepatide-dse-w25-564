@@ -1,10 +1,12 @@
-<p class="center">According to the National Health and Nutrition Examination Survey (NHANES) data on adults with diabetes, BMI also plays a role in diabetes-related complications. When compared with participants who had a BMI of &lt;30 kg/m<sup>2</sup>, participants with a BMI ≥30 kg/m<sup>2</sup> were<sup>11,‡</sup>:</p>
-
-<div class="diseasePercent">
-    <div class="container" v-for="(data, key) in diseaseData" :key="key">
-        <img :src="data.graph" alt="graph">
-        <p v-html="data.text"></p>
-     </div>
+<div>
+    <p class="center">According to the National Health and Nutrition Examination Survey (NHANES) data on adults with diabetes, BMI also plays a role in diabetes-related complications. When compared with participants who had a BMI of &lt;30 kg/m<sup>2</sup>, participants with a BMI ≥30 kg/m<sup>2</sup> were<sup>11,‡</sup>:</p>
+    
+    <div class="diseasePercent">
+        <div class="container" v-for="(data, key) in diseaseData" :key="key">
+            <img :src="data.graph" alt="graph">
+            <p v-html="data.text"></p>
+         </div>
+    </div>
+    
+    <p class="footnote"><sup>‡</sup>NHANES participants from 2015-2018 who were not pregnant, were ≥20 years of age, and reported having ever received a diagnosis of diabetes from a physician, aside from gestational diabetes (n=6653). Although this dataset includes patients with both type 1 and type 2 diabetes, it likely reflects the population at large and would therefore represent >90% of patients with type 2 diabetes.</p>
 </div>
-
-<p class="footnote"><sup>‡</sup>NHANES participants from 2015-2018 who were not pregnant, were ≥20 years of age, and reported having ever received a diagnosis of diabetes from a physician, aside from gestational diabetes (n=6653). Although this dataset includes patients with both type 1 and type 2 diabetes, it likely reflects the population at large and would therefore represent >90% of patients with type 2 diabetes.</p>

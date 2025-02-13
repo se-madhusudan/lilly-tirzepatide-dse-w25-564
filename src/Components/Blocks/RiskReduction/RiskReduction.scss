@@ -1,0 +1,21 @@
+.riskReduction {
+    background: $white;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.04), 0px 8px 16px 0px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    margin: 40px auto 60px;
+
+    p {
+        color:  $bodyCopy;
+        font-size: $fontSize18;
+        font-weight: $fontWeightSemiBold;
+        line-height: $lineHeight135;
+    }
+
+    &__data {
+        margin-top: 32px;
+        display: flex;
+        padding: 0 45px;
+        align-items: start;
+        justify-content: space-between;
+    }
+}
