@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="slider__contentWrapper">
-          <VueSlickCarousel :arrows="false" :dots="true" :infinite="true" ref="carousel">
+          <VueSlickCarousel v-bind="settings" ref="carousel">
             <VideoContent v-for="(data, index) in videoData" :videoData="data" />
           </VueSlickCarousel>
         </div>

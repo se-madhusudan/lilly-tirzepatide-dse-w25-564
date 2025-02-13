@@ -18,6 +18,11 @@
 
     data() {
       return {
+        settings: {
+          arrows: false, 
+          dots: true, 
+          infinite: true
+        },
         infoData: {
           source: require('@/Assets/Img/icons/dse-icon-barriers-lg.svg'),
           title: 'Barriers to managing weight in patients with T2D',
