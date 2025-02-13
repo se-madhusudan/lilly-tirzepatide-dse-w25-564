@@ -1,13 +1,27 @@
-.container{
+.diseasePercent {
+  display: flex;
+
+  .container {
     display: flex;
     align-items: center;
     max-width: 531.5px;
     gap: 24px;
 
-    p{
-        color: $bodyCopy;
-        font-size: $fontSize16;
-        font-weight: $fontWeightSemiBold;
-        line-height: $lineHeight135;
+    p {
+      color: $bodyCopy;
+      font-size: $fontSize16;
+      font-weight: $fontWeightSemiBold;
+      line-height: $lineHeight135;
     }
+  }
+
+  .container:first-of-type {
+    padding: 22px 0;
+    padding-right: 28px;
+    border-right: 1px solid $bdr;
+  }
+  .container:last-of-type {
+    padding: 22px 0;
+    padding-left: 28px;
+  }
 }

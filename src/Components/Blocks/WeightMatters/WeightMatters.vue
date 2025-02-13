@@ -27,7 +27,9 @@
             'Based on preclinical and clinical data in animal models, excess weight—particularly in association with excess abdominal fat—is associated with local and systemic insulin resistance and inflammation.<sup>4-7</sup>'
           ]
         },
-        callOutContent: 'People with T2D who have a higher body mass index (BMI) are more likely to have inadequate glycemic control.<sup>10</sup>',
+        callOutContent: {
+          text: 'People with T2D who have a higher body mass index (BMI) are more likely to have inadequate glycemic control.<sup>10</sup>',
+        },
         diseasePercentData: [
           {
             graph: require('@/Assets/Img/WeightMatters/graph-23-percent.png'),

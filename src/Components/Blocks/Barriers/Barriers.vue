@@ -25,8 +25,10 @@
             'Metabolic adaptation, an adaptive hormonal and metabolic response associated with weight loss through diet and exercise, can present an additional challenge for patients with T2D and excess weight.<sup>2,19–21</sup>'
           ]
         },
-        callOutContent: 'The American Diabetes Association recommends that clinicians consider the <span class="red">effect on weight</span> when choosing medications to treat patients with T2D and overweight or obesity.<sup>1</sup>',
-        maxWidth: "1072px",
+        callOutContent: {
+          text: 'The American Diabetes Association recommends that clinicians consider the <span class="red">effect on weight</span> when choosing medications to treat patients with T2D and overweight or obesity.<sup>1</sup>',
+          class: 'fullWidthBarrier'
+        },
         videoData: [
           {
             text: '<span class="bold">Watch</span> these short videos for examples of collaborative and effective conversations to help facilitate',

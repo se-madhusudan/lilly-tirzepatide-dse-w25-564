@@ -4,8 +4,7 @@
     export default {
         name: "CallOut",
         props: {
-            callOutText: String,
-            maxWidth: String,
+            callOutText: Object,
         },
     };
 </script>

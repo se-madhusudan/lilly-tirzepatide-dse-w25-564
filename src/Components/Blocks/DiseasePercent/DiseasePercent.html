@@ -1,4 +1,6 @@
-<div class="container">
-    <img :src="diseaseData.graph" alt="graph">
-    <p v-html="diseaseData.text"></p>
- </div>
+<div class="diseasePercent">
+    <div class="container" v-for="(data, key) in diseaseData" :key="key">
+        <img :src="data.graph" alt="graph">
+        <p v-html="data.text"></p>
+     </div>
+</div>
