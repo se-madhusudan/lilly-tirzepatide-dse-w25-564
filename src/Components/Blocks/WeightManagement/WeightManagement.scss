@@ -1,4 +1,41 @@
-.weightManagement{
+.weightManagement {
   background: linear-gradient(180deg,rgba(238, 237, 235, 0.2) 0%,rgba(255, 255, 255, 0.2) 100%);
   padding: 48px 0 60px;
+
+  .chartContainer {
+    width: 100%;
+    padding: 60px 20px;
+    background: $black;
+    margin: 60px 0;
+
+    p {
+      margin: 0 auto;
+      color: $white;
+      font-size: $fontSize34;
+      font-weight: $fontWeightSemiBold;
+      line-height: $lineHeight135;
+      max-width: 1120px;
+    }
+
+    p:nth-of-type(2) {
+      margin: 40px auto;
+    }
+
+    .chart {
+      margin: 0 auto;
+      max-width: 898px;
+    }
+
+    .chart:nth-of-type(2) {
+      margin-top: 32px;
+      max-width: 988px;
+    }
+
+    .chart {
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
 }

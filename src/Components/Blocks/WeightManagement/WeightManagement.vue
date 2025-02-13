@@ -4,12 +4,14 @@
   import Info from '@/Components/Blocks/Info/Info.vue';
   import RiskReduction from '@/Components/Blocks/RiskReduction/RiskReduction.vue';
   import Graphs from '@/Components/Blocks/Graphs/Graphs.vue';
+  import CallOut from '@/Components/Blocks/CallOut/CallOut.vue';
   export default {
     name: "WeightManagement",
     components: {
       Info,
       RiskReduction,
-      Graphs
+      Graphs,
+      CallOut,
     },
 
     data() {
@@ -50,7 +52,21 @@
             heading: 'HDL',
             image: require('@/Assets/Img/Graphs/chart-hdl.png')
           },
-        ]
+        ],
+        chartData: {
+          text: [
+            'Weight management <span class="red">early</span> in the course of diabetes care targets a key component of the pathophysiology of diabetes.<sup>2,29</sup>',
+            'Early weight management is an important <span class="red">UPSTREAM</span> intervention to T2D care, while glucose control is a <span class="red">DOWNSTREAM</span> intervention.<sup>2,29</sup>'
+          ],
+          image: [
+            require('@/Assets/Img/WeightManagement/weight-glucose-control-red-bar.png'),
+            require('@/Assets/Img/WeightManagement/chart-exccessive-fat.png')
+          ]
+        },
+        callOutContent: {
+          text: 'For patients with T2D, a treatment approach that addresses excess weight upstream could provide more clinical benefit than an approach that focuses only on glycemic control.<sup>2,17</sup>',
+          class: 'fullWidthWeightManagement'
+        },
       }
     }
   }
