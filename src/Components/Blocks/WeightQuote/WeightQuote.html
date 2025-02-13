@@ -1,0 +1,6 @@
+<div class="weightQuote">
+  <div class="weightQuote__data" v-for="(data, index) in quoteData" :key="index">
+    <img :src="data.image" alt="icon" />
+    <p v-html="data.text"></p>
+  </div>
+</div>

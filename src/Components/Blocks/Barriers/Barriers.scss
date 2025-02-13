@@ -2,47 +2,6 @@
   background: linear-gradient(180deg,rgba(238, 237, 235, 0.2) 0%,rgba(255, 255, 255, 0.2) 100%);
   padding: 48px 0 0;
 
-  .weightQuote {
-    margin: 32px auto 60px;
-    padding: 40px;
-    background-color: #fff;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.04),
-      0px 8px 16px 0px rgba(0, 0, 0, 0.08);
-
-    &__loss {
-      display: flex;
-      gap: 32px;
-      padding-bottom: 32px;
-      border-bottom: 1px solid #bdbdbd;
-      align-items: center;
-
-      &--text {
-        color: $bodyCopy;
-        font-size: $fontSize18;
-        font-weight: $fontWeightNormal;
-        line-height: $lineHeight135;
-
-        .semi-bold {
-          font-weight: $fontWeightSemiBold;
-        }
-      }
-    }
-
-    &__gain {
-      display: flex;
-      padding-top: 32px;
-      gap: 32px;
-      align-items: center;
-
-      &--text {
-        color: $bodyCopy;
-        font-size: $fontSize18;
-        font-weight: $fontWeightNormal;
-        line-height: $lineHeight135;
-      }
-    }
-  }
-
   .contentWrap {
     .left {
       color: $bodyCopy;

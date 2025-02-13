@@ -3,6 +3,7 @@
 <script>
   import Info from '@/Components/Blocks/Info/Info.vue';
   import CallOut from '@/Components/Blocks/CallOut/CallOut.vue';
+  import WeightQuote from '@/Components/Blocks/WeightQuote/WeightQuote.vue';
   import VueSlickCarousel from 'vue-slick-carousel';
   import VideoContent from '@/Components/Blocks/VideoContent/VideoContent.vue';
   export default {
@@ -10,6 +11,7 @@
     components: {
       Info,
       CallOut,
+      WeightQuote,
       VueSlickCarousel,
       VideoContent,
     },
@@ -29,6 +31,16 @@
           text: 'The American Diabetes Association recommends that clinicians consider the <span class="red">effect on weight</span> when choosing medications to treat patients with T2D and overweight or obesity.<sup>1</sup>',
           class: 'fullWidthBarrier'
         },
+        quoteData: [
+          {
+            image: require('@/Assets/Img/WeightQuote/weight-icon.svg'),
+            text: 'As little as <span class="semi-bold">3%</span> weight loss is associated with metabolic adaptation, which results in a tendency toward weight regain.<sup>19,20,22,23</sup>'
+          },
+          {
+            image: require('@/Assets/Img/WeightQuote/rx-icon.svg'),
+            text: 'Studies have also shown that some antihyperglycemic agents may be associated with weight gain.<sup>14,24</sup>'
+          }
+        ],
         videoData: [
           {
             text: '<span class="bold">Watch</span> these short videos for examples of collaborative and effective conversations to help facilitate',
