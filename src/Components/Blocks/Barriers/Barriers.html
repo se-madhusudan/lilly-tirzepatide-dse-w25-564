@@ -17,20 +17,9 @@
             </div>
         </div>
         <div class="slider__contentWrapper">
-          <VueSlickCarousel :arrows="false" :dots="false" :infinite="true" ref="carousel">
+          <VueSlickCarousel :arrows="false" :dots="true" :infinite="true" ref="carousel">
             <VideoContent v-for="(data, index) in videoData" :videoData="data" />
           </VueSlickCarousel>
-        </div>
-        <div class="slider__bottomWrapper">
-           <div class="slider__line--active">
-            &nbsp;
-           </div>
-           <div class="slider__line">
-            &nbsp;
-           </div>
-           <div class="slider__line">
-            &nbsp;
-           </div>
         </div>
     </div>
 
