@@ -1,0 +1,48 @@
+.resourceHub {
+  background: linear-gradient(180deg,rgba(238, 237, 235, 0.2) 0%,rgba(255, 255, 255, 0.2) 100%);
+  padding: 48px 0;
+
+  .container {
+    max-width: 1120px;
+    background: $white;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.04),0px 8px 16px 0px rgba(0, 0, 0, 0.08);
+    padding: 32px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+
+    .text {
+      margin-right: 100px;
+      &__title {
+        color: $primaryColor;
+        font-size: $fontSize24;
+        font-weight: $fontWeightSemiBold;
+      }
+
+      &__description {
+        color: $bodyCopy;
+        font-size: $fontSize18;
+        font-weight: $fontWeightNormal;
+        line-height: $lineHeight135;
+        margin: 16px 0 32px;
+      }
+
+      button {
+        border-radius: 12px;
+        background: $primaryColor;
+        border: none;
+        padding: 10px 20px;
+        color: $white;
+        text-align: center;
+        font-size: $fontSize16;
+        font-weight: $fontWeightBold;
+        line-height: $lineHeight140;
+      }
+
+      button:hover {
+        background: #b1160e;
+        cursor: pointer;
+      }
+    }
+  }
+}
