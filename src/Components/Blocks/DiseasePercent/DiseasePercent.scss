@@ -1,3 +1,14 @@
+.center {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  color: $bodyCopy;
+  font-size: $fontSize20;
+  font-weight: $fontWeightSemiBold;
+  line-height: $lineHeight145;
+  padding: 48px 0 36px;
+}
+
 .diseasePercent {
   display: flex;
 
