@@ -26,10 +26,11 @@
     ol {
       list-style-type: number;
       margin-top: 24px;
+      list-style-position: outside;
+      padding-left: 14px;
 
       ::marker {
         font-weight: $fontWeightBold;
-        margin-right: 8px;
       }
 
       li {
@@ -38,6 +39,7 @@
         font-weight: $fontWeightNormal;
         line-height: $lineHeight135;
         margin-top: 16px;
+        padding-left: 8px;
       }
     }
   }
