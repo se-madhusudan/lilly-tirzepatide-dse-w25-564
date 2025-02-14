@@ -167,7 +167,7 @@ sup {
     width: 60px;
     height: 6px;
     border-radius: 999px;
-    background: linear-gradient(0deg,rgba(255, 255, 255, 0.7) 0%,rgba(255, 255, 255, 0.7) 100%),#fa4747;
+    background: $gradient4;
 
     button {
       display: none;

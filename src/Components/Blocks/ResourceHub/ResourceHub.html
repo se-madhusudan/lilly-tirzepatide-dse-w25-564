@@ -4,13 +4,15 @@
 
         <div class="container">
             <div class="text">
-                <p class="text__title">Medical Workmat</p>
-                <p class="text__description">Talking to patients with T2D about weight management can be challenging. The Medical Workmat can help navigate those conversations.</p>
-                <button>Download the Medical Workmat</button>
+                <p class="text__title" v-html="resourceData.title"></p>
+                <p class="text__description" v-html="resourceData.des"></p>
+                <a :href="resourceData.url" target="_blank"><button v-html="resourceData.anchorText"></button></a>
             </div>
             <div class="image">
-                <img src="@/Assets/Img/ResourceSection/medical-workmat.png" alt="workmat">
+                <img :src="resourceData.image" alt="workmat">
             </div>
         </div>
+
+        <References :referenceData="referenceData" />
     </div>
 </div>

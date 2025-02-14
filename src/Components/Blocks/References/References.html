@@ -1,0 +1,14 @@
+<div class="references">
+    <div class="accordian">
+       <p v-html="referenceData.title" class="accordian__title"></p>
+       <div class="accordian__icons">
+           <img :src="referenceData.icons[0]" @click="isShowing = !isShowing" alt="hide icon" v-show="isShowing">
+           <img :src="referenceData.icons[1]" @click="isShowing = !isShowing" alt="show icon" v-show="!isShowing">
+       </div>
+    </div>
+    <div class="panel" v-show="isShowing">
+        <ol>
+            <li v-for="(data, index) in referenceData.li" :key="index" v-html="data"></li>
+        </ol>
+    </div>
+</div>

@@ -1,11 +1,11 @@
 .resourceHub {
-  background: linear-gradient(180deg,rgba(238, 237, 235, 0.2) 0%,rgba(255, 255, 255, 0.2) 100%);
-  padding: 48px 0;
+  background: $gradient1;
+  padding: 48px 0 0;
 
   .container {
     max-width: 1120px;
     background: $white;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.04),0px 8px 16px 0px rgba(0, 0, 0, 0.08);
+    box-shadow: $boxShadow;
     padding: 32px;
     margin: 0 auto;
     display: flex;
@@ -27,16 +27,20 @@
         margin: 16px 0 32px;
       }
 
-      button {
-        border-radius: 12px;
-        background: $primaryColor;
-        border: none;
-        padding: 10px 20px;
-        color: $white;
-        text-align: center;
-        font-size: $fontSize16;
-        font-weight: $fontWeightBold;
-        line-height: $lineHeight140;
+      a {
+        text-decoration: none;
+        
+        button {
+          border-radius: 12px;
+          background: $primaryColor;
+          border: none;
+          padding: 10px 20px;
+          color: $white;
+          text-align: center;
+          font-size: $fontSize16;
+          font-weight: $fontWeightBold;
+          line-height: $lineHeight140;
+        }
       }
 
       button:hover {

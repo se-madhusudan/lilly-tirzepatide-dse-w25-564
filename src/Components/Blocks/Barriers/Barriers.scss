@@ -1,5 +1,5 @@
 .barriers {
-  background: linear-gradient(180deg,rgba(238, 237, 235, 0.2) 0%,rgba(255, 255, 255, 0.2) 100%);
+  background: $gradient1;
   padding: 48px 0 0;
 
   .contentWrap {
@@ -15,7 +15,7 @@
         &--prev {
           padding: 7px 40px 7px 20px;
           border-bottom-right-radius: 54px;
-          background: linear-gradient(270deg, #e1251b 0%, #fa4747 100%);
+          background: $gradient2;
 
           img:hover {
             cursor: pointer;
@@ -25,7 +25,7 @@
         &--next {
           padding: 7px 20px 7px 40px;
           border-bottom-left-radius: 54px;
-          background: linear-gradient(270deg, #e1251b 0%, #fa4747 100%);
+          background: $gradient2;
 
           img:hover {
             cursor: pointer;
@@ -35,7 +35,7 @@
         &--prev:hover,
         &--next:hover {
           cursor: pointer;
-          background: linear-gradient(270deg, #bb1e15 0%, #dd2929 100%);
+          background: $gradient3;
         }
       }
 

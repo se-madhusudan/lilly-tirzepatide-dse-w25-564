@@ -1,0 +1,44 @@
+.references {
+  padding: 24px 12px;
+  border-top: 2px solid $bdr;
+  border-bottom: 2px solid $bdr;
+  margin: 60px auto;
+
+  .accordian {
+    display: flex;
+    justify-content: space-between;
+
+    &__title {
+      color: $primaryColor;
+      font-size: $fontSize24;
+      font-weight: $fontWeightBold;
+      line-height: normal;
+    }
+
+    &__icons:hover {
+      cursor: pointer;
+    }
+  }
+
+  .panel {
+    margin-top: 24px;
+
+    ol {
+      list-style-type: number;
+      margin-top: 24px;
+
+      ::marker {
+        font-weight: $fontWeightBold;
+        margin-right: 8px;
+      }
+
+      li {
+        color: $bodyCopy;
+        font-size: $fontSize14;
+        font-weight: $fontWeightNormal;
+        line-height: $lineHeight135;
+        margin-top: 16px;
+      }
+    }
+  }
+}
