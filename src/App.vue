@@ -1,5 +1,6 @@
 <template>
   <div id="app" :class="{ screentest: userAgent.screentest, isIE: isIE}">
+    <PopUp />
     <section :class="{ 'main-wrapp': true}">
       <header>
         <header-top />
@@ -22,6 +23,7 @@ import handleResize from "@/mixins/handleResize";
 import handleOrientation from "@/mixins/handleOrientation";
 import fixSafariOffset from "@/mixins/fixSafariOffset";
 import { NoParentScrollMixin } from "@/mixins/NoParentScrollMixin";
+import PopUp from '@/Components/Blocks/PopUp/PopUp.vue';
 import HeaderBlock from "@/Components/Layouts/Header/Header";
 import HeaderTop from "@/Components/Layouts/Header/HeaderTop";
 import BrandFooter from "@/Components/Layouts/Brand/BrandFooter";
@@ -36,9 +38,11 @@ export default {
     "rotate-lock": rotateLock,
     "header-top": HeaderTop,
     "header-block": HeaderBlock,
+    PopUp,
     BrandFooter,
     basePath: process.env.BASE_URL,
   },
+
   beforeMount() {
     this.$store.commit(
       "UPDATE_SCREENTEST",

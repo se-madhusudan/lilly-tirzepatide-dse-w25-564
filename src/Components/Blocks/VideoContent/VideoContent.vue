@@ -5,6 +5,12 @@ export default{
     name: 'VideoContent',
     props: {
         videoData: Object,
+    },
+    methods: {
+        popUpHandler(){
+            // console.log('clicked on video');
+            this.$root.$emit('show-popup');
+        }
     }
 }
 </script>
