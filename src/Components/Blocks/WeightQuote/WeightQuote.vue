@@ -4,7 +4,7 @@
   export default {
     name: 'WeightQuote',
     props: {
-        quoteData: Object,
+        quoteData: Array,
     }
   }
 </script>

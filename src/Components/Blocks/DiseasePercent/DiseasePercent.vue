@@ -4,7 +4,7 @@
     export default {
         name: "DiseasePercent",
         props: {
-            diseaseData: Object,
+            diseaseData: Array,
         },
     };
 </script>

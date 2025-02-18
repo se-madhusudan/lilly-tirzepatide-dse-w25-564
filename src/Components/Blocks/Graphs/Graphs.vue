@@ -4,7 +4,7 @@
   export default {
     name: 'Graphs',
     props: {
-        graphData: Object
+        graphData: Array,
     }
   }
 </script>
