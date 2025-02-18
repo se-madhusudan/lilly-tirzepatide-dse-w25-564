@@ -7,7 +7,7 @@
   </div>
   <div class="videoContent__right">
     <div class="videoContent__right--video">
-      <img :src="videoData.thumbnail" @click="popUpHandler" alt="video thumbnail" />
+      <img :id="videoData.id" :src="videoData.thumbnail" @click="popUpHandler" alt="video thumbnail" />
     </div>
     <div class="textContent">
       <p class="videoContent__right--text" v-html="videoData.videoText"></p>

@@ -10,6 +10,7 @@ export default{
         popUpHandler(){
             // console.log('clicked on video');
             this.$root.$emit('show-popup');
+            this.$root.$emit('get-id', event.target.id);
         }
     }
 }

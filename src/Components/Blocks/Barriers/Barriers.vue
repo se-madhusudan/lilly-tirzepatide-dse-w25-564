@@ -54,6 +54,7 @@
               '<span class="bullets">&bullet;</span> <p><span class="bold">Advising</span> and educating patients about addressing their glycemic and weight goals, and</p>',
               '<span class="bullets">&bullet;</span> <p><span class="bold">Acknowledging</span> the challenges in patients’ diabetes care journeys</p>'
             ],
+            id: 'assessVideo',
             thumbnail: require('@/Assets/Img/VideoContent/assess-thumbnail.jpg'),
             videoText: '<span class="bold">ASSESS:</span> <br />Evaluating Patient Readiness for Diabetes-Management Strategies'
           },
@@ -64,6 +65,7 @@
               '<span class="bullets">&bullet;</span> <p><span class="bold">Advising</span> and educating patients about addressing their glycemic and weight goals, and</p>',
               '<span class="bullets">&bullet;</span> <p><span class="bold">Acknowledging</span> the challenges in patients’ diabetes care journeys</p>'
             ],
+            id: 'adviceVideo',
             thumbnail: require('@/Assets/Img/VideoContent/advice-thumbnail.png'),
             videoText: '<span class="bold">ADVISE:</span> <br />Educating Patients About Addressing Glycemic and Weight Goals'
           },
@@ -74,6 +76,7 @@
               '<span class="bullets">&bullet;</span> <p><span class="bold">Advising</span> and educating patients about addressing their glycemic and weight goals, and</p>',
               '<span class="bullets">&bullet;</span> <p><span class="bold">Acknowledging</span> the challenges in patients’ diabetes care journeys</p>'
             ],
+            id: 'acknowledgeVideo',
             thumbnail: require('@/Assets/Img/VideoContent/acknowledge-thumbnail.png'),
             videoText: '<span class="bold">ACKNOWLEDGE:</span> <br />Assisting Patients Through Challenges in Their Diabetes Care Journeys'
           }

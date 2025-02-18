@@ -44,6 +44,7 @@
         {
           text: '<span class="bold">Watch</span> to learn more from an expert in diabetes care, who shares why a treatment approach that includes weight management could provide more clinical benefit than one that focuses exclusively on addressing hyperglycemia.',
           li: [],
+          id: 'aliceVideo',
           thumbnail: require('@/Assets/Img/VideoContent/video-thumbnail.png'),
           videoText: '<span class="bold">Alice Cheng, MD, FRCPC</span> <br />Associate Professor <br />University of Toronto, Canada'
         }
