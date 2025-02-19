@@ -18,6 +18,16 @@
     &__icons:hover {
       cursor: pointer;
     }
+
+    &__icons {
+      background: url('../../../Assets/Img/icons/icon-show.svg');
+      width: 24px;
+      height: 24px;
+    }
+
+    .active {
+      background: url('../../../Assets/Img/icons/icon-hide.svg');
+    }
   }
 
   .panel {

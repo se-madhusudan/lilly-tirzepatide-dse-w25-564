@@ -1,10 +1,7 @@
 <div class="references">
     <div class="accordian">
        <p v-html="referenceData.title" class="accordian__title"></p>
-       <div class="accordian__icons">
-           <img :src="referenceData.icons[0]" @click="isShowing = !isShowing" alt="hide icon" v-show="isShowing">
-           <img :src="referenceData.icons[1]" @click="isShowing = !isShowing" alt="show icon" v-show="!isShowing">
-       </div>
+       <div class="accordian__icons" :class="{ active: isShowing }" @click="isShowing = !isShowing"></div>
     </div>
     <div class="panel" v-show="isShowing">
         <ol>

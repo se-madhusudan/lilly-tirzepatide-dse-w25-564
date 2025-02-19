@@ -27,10 +27,6 @@
         },
         referenceData: {
           title: 'References',
-          icons: [
-            require('@/Assets/Img/icons/icon-hide.svg'),
-            require('@/Assets/Img/icons/icon-show.svg')
-          ],
           li: [
             'Davies MJ, Aroda VR, Collins BS, et al. Management of hyperglycemia in type 2 diabetes, 2022. A consensus report by the American Diabetes Association (ADA). <i>Diabetes Care.</i> 2022;45(11):2753-2786.',
             'Lingvay I, Sumithran P, Cohen R, le Roux C. Obesity management as a primary treatment goal for type 2 diabetes: time to reframe the conversation. <i>Lancet.</i> 2022;399(10322):394-405.',

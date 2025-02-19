@@ -40,8 +40,13 @@
         max-height: 462px;
         z-index: 999999;
     }
-    &__thumbnail {
+    // &__thumbnail {
+    //     width: 100%;
+    //     object-fit: cover;
+    // }
+
+    &__video {
         width: 100%;
-        object-fit: cover;
+        height: 100%;
     }
 }
