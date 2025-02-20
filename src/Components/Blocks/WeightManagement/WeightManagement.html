@@ -1,20 +1,20 @@
 <div class="weightManagement" id="Importance">
     <div class="contentWrap">
-        <Info :infoData="infoData" />
-        <RiskReduction :riskReductionData="riskReductionData" />
-        <Graphs :graphData="graphData"/>
+        <Info :infoData="managementData.infoData" />
+        <RiskReduction :riskReductionData="managementData.riskReductionData" />
+        <Graphs :graphData="managementData.graphData"/>
     </div>
 
     <div class="chartContainer">
-        <p v-for="(data, index) in chartData.text" v-html="data"></p>
+        <p v-for="(data, index) in managementData.chartData.text" v-html="data"></p>
 
-        <div class="chart" v-for="(data, index) in chartData.image">
+        <div class="chart" v-for="(data, index) in managementData.chartData.image">
           <img :src="data" alt="chart">
         </div>
     </div>
 
     <div class="contentWrap">
-        <CallOut :callOutText="callOutContent" />
+        <CallOut :callOutText="managementData.callOutContent" />
         <p class="footnote">T2D, type 2 diabetes.</p>
     </div>
 </div>

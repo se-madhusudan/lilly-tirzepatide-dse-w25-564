@@ -1,18 +1,18 @@
 <div class="resourceHub" id="Resource">
     <div class="contentWrap">
-        <Info :infoData="infoData" />
+        <Info :infoData="data.infoData" />
 
         <div class="container">
             <div class="text">
-                <p class="text__title" v-html="resourceData.title"></p>
-                <p class="text__description" v-html="resourceData.des"></p>
-                <a :href="resourceData.url" target="_blank"><button v-html="resourceData.anchorText"></button></a>
+                <p class="text__title" v-html="data.resourceData.title"></p>
+                <p class="text__description" v-html="data.resourceData.des"></p>
+                <a :href="data.resourceData.url" target="_blank"><button v-html="data.resourceData.anchorText"></button></a>
             </div>
             <div class="image">
-                <img :src="resourceData.image" alt="workmat">
+                <img :src="data.resourceData.image" alt="workmat">
             </div>
         </div>
 
-        <References :referenceData="referenceData" />
+        <References :referenceData="data.referenceData" />
     </div>
 </div>

@@ -1,10 +1,10 @@
 <div class="barriers" id="Barriers">
   <div class="contentWrap">
-    <Info :infoData="infoData" />
+    <Info :infoData="barriersData.infoData" />
 
-    <WeightQuote :quoteData="quoteData" />
+    <WeightQuote :quoteData="barriersData.quoteData" />
 
-    <CallOut :callOutText="callOutContent" />
+    <CallOut :callOutText="barriersData.callOutContent" />
     <p class="left">Having conversations about weight to support T2D management can be another barrier for both HCPs and patients. But these conversations are important because weight management may support glycemic control and facilitate more comprehensive diabetes care.</p>
 
     <div class="slider">
@@ -18,7 +18,7 @@
         </div>
         <div class="slider__contentWrapper">
           <VueSlickCarousel v-bind="settings" ref="carousel">
-            <VideoContent v-for="(data, index) in videoData" :videoData="data" />
+            <VideoContent v-for="(data, index) in barriersData.videoData" :videoData="data" />
           </VueSlickCarousel>
         </div>
     </div>

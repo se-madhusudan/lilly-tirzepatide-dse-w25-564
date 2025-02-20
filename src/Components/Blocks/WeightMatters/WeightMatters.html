@@ -1,17 +1,17 @@
 <div class="weightMatters" id="Matters">
     <div class="contentWrap">
-        <Info :infoData="infoData" />
+        <Info :infoData="mattersData.infoData" />
     </div>
     <div class="graphContainer">
         <Abnormal />
     </div>
     <div class="contentWrap">
-        <CallOut :callOutText="callOutContent" />
+        <CallOut :callOutText="mattersData.callOutContent" />
         
-        <DiseasePercent :diseaseData="diseasePercentData" />
+        <DiseasePercent :diseaseData="mattersData.diseasePercentData" />
 
         <div class="videoContainer">
-            <VideoContent v-for="(data, index) in videoData" :key="index" :videoData="data" />
+            <VideoContent v-for="(data, index) in mattersData.videoData" :key="index" :videoData="data" />
         </div>
         <p class="footnote">T2D, type 2 diabetes.</p>
     </div>
