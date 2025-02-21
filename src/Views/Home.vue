@@ -26,7 +26,6 @@ export default {
       heroData: {
         title: 'Glycemic Control and Excess Weight in Type 2 Diabetes: Expert Perspectives',
         des: 'Learn how addressing excess weight can support efforts to achieve glycemic control in patients with type 2 diabetes.<sup>1</sup>',
-        bgImage: require('@/Assets/Img/HeroSection/hero-background-lg.png'),
       },
       mattersData: {
         infoData: {

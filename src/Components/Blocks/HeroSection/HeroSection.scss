@@ -1,24 +1,53 @@
 .heroSection {
     max-width: $mainWrapper;
-    height: 745px;
     position: relative;
+    background-image: url('../../../Assets/Img/HeroSection/hero-background-lg.png');
     background-repeat: no-repeat;
-    background-position: right;
     background-size: cover;
     padding: 190px 0;
 
+    @include media("<=tablet") {
+        background: url("../../../Assets/Img/HeroSection/hero-background-md.png") no-repeat;
+        background-size: cover;
+        padding: 40px 0 100px 32px;
+    }
+
+    @include media("<smallPhone") {
+        background: url("../../../Assets/Img/HeroSection/hero-background-sm.png") no-repeat;
+        background-size: cover;
+        padding: 40px 16px 400px 16px;
+    }
+    
+
     &__content {
         max-width: 725px;
+
+        @include media("<=tablet") {
+            max-width: 404px;
+        }
+    
+        @include media("<smallPhone") {
+            max-width: 368px;
+        }
     }
 
     &__title {
         font-size: $fontSize48;
         color: $white;
-        margin-bottom: 60px;
+        margin-bottom: 40px;
         font-weight: $fontWeightBold;
         line-height: normal;
         position: relative;
         padding-bottom: 40px;
+
+        @include media("<=tablet") {
+            font-size: $fontSize34;
+        }
+    
+        @include media("<smallPhone") {
+            margin-bottom: 36px;
+            padding-bottom: 36px;
+        }
 
         &::after {
             content: '';
@@ -36,6 +65,10 @@
         color: $white;
         font-weight: $fontWeightSemiBold;
         line-height: $lineHeight135;
+
+        @include media("<=tablet") {
+            font-size: $fontSize20;
+        }
     }
 
     span {
