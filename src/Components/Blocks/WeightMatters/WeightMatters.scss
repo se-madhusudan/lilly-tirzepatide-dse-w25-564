@@ -1,6 +1,10 @@
 .weightMatters {
   background: $white;
   padding: 60px 0 0;
+
+  @include media("<=tablet") {
+    padding: 40px 0 0;
+  }
 }
 
 .graphContainer {
@@ -8,12 +12,19 @@
   background-color: $black;
   padding: 60px 20px;
   margin: 60px 0;
+
+  @include media("<=tablet") {
+    margin: 40px 0;
+    padding: 40px 20px;
+  }
+
+  @include media("<=smallPhone") {
+    padding: 40px 16px;
+  }
 }
 
-.contentWrap {
-  .videoContainer {
-    background: $white;
-    box-shadow: $boxShadow;
-    padding: 40px;
-  }
+.videoContainer {
+  background: $white;
+  box-shadow: $boxShadow;
+  padding: 40px;
 }

@@ -14,6 +14,10 @@
             font-size:  $fontSize34;
             font-weight: $fontWeightSemiBold;
             line-height: $lineHeight120;
+
+            @include media("<=tablet") {
+               font-size: $fontSize24;
+            }
         }
     }
 
@@ -23,6 +27,11 @@
         font-weight: $fontWeightMedium;
         line-height: $lineHeight135;
         margin: 60px auto 32px;
+
+        @include media("<=tablet") {
+            font-size: $fontSize20;
+            margin: 40px auto 32px;
+        }
     }
 
     &__des {
@@ -31,5 +40,9 @@
         font-weight: $fontWeightMedium;
         line-height: $lineHeight135;
         margin-bottom: 28px;
+
+        @include media("<=tablet") {
+            font-size: $fontSize16;
+        }
     }
 }
