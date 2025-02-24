@@ -41,6 +41,10 @@
 
       &__contentWrapper {
         padding: 30px 32px 24px;
+
+        @include media('<=tablet') {
+          padding: 30px 20px 24px;
+        }
       }
 
       &__textContainer {

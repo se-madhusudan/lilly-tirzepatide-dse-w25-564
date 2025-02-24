@@ -7,16 +7,30 @@
   font-weight: $fontWeightSemiBold;
   line-height: $lineHeight145;
   padding: 48px 0 36px;
+
+  @include media('<=tablet') {
+    max-width: 594px;
+    font-size: $fontSize16;
+  }
 }
 
 .diseasePercent {
   display: flex;
+  margin: 0 auto;
+
+  @include media('<phone') {
+    flex-direction: column;
+  }
 
   .container {
     display: flex;
     align-items: center;
     max-width: 531.5px;
     gap: 24px;
+
+    @include media('<phone') {
+      margin: 0 auto;
+    }
 
     p {
       color: $bodyCopy;
@@ -30,9 +44,19 @@
     padding: 22px 0;
     padding-right: 28px;
     border-right: 1px solid $bdr;
+
+    @include media('<phone') {
+      padding-right: 0;
+      border-right: none;
+      border-bottom: 1px solid $bdr;
+    }
   }
   .container:last-of-type {
     padding: 22px 0;
     padding-left: 28px;
+
+    @include media('<phone') {
+      padding-left: 0;
+    }
   }
 }

@@ -10,21 +10,38 @@
     font-weight: $fontWeightMedium;
     line-height: $lineHeight135;
 
+    @include media('<=tablet'){
+      font-size: $fontSize20;
+    }
+
     p {
       max-width: 756px;
       margin: 0 auto;
+
+      @include media('<=tablet') {
+        max-width: 600px;
+      }
     }
 
     .fullWidthBarrier {
       max-width: 1072px;
+
+      @include media('<=tablet'){
+        max-width: 656px;
+      }
     }
 
     .fullWidthWeightManagement{
       max-width: 1080px;
+
+      @include media('<=tablet'){
+        max-width: 664px;
+      }
     }
 
     ::v-deep span.red {
       color: $primaryColor;
+      font-weight: $fontWeightBold;
     }
   }
 }

@@ -150,10 +150,21 @@ sup {
   font-size: $fontSize20;
   line-height: $lineHeight135;
   margin: 60px auto 40px;
+
+  @include media('<=tablet') {
+    margin: 40px auto 40px;
+    font-size: $fontSize16;
+  }
 }
 
 .red {
   color: $primaryColor;
+}
+
+.breakHide {
+  @include media('<=phone') {
+    display: none;
+  }
 }
 
 .slick-dots{

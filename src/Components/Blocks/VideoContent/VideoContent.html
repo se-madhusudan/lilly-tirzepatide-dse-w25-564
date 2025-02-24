@@ -1,7 +1,7 @@
 <div class="videoContent">
   <div class="videoContent__left">
     <p class="videoContent__left--text" v-html="videoData.text"></p>
-    <ul>
+    <ul v-if="videoData.li.length != 0">
       <li v-for="(item, index) in videoData.li" :key="index" v-html="item"></li>
     </ul>
   </div>

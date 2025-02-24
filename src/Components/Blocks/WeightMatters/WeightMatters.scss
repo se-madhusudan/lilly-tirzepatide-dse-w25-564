@@ -27,4 +27,12 @@
   background: $white;
   box-shadow: $boxShadow;
   padding: 40px;
+
+  @include media('<=tablet'){
+    padding: 30px 20px;
+  }
+
+  @include media('<phone') {
+    padding: 20px;
+  }
 }

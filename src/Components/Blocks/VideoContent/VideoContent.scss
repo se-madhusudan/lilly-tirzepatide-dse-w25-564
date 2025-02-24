@@ -2,16 +2,35 @@
   display: flex !important; //to overwrite the slick slide property
   vertical-align: center;
 
+  @include media('<=smallPhone') {
+    flex-direction: column;
+    gap: 30px;
+  }
+
   &__left {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-right: 56px;
+    flex: 44%;
+
+    @include media('<=tablet') {
+      flex: 45%;
+      margin-right: 20px;
+    }
+
+    @include media('<=smallPhone') {
+      margin-right: 0;
+    }
 
     &--text {
       color: $bodyCopy;
       font-size: $fontSize20;
       line-height: $lineHeight140;
+
+      @include media('<=tablet') {
+        font-size: $fontSize16;
+      }
 
       ::v-deep .bold {
         font-weight: $fontWeightSemiBold;
@@ -33,6 +52,10 @@
       font-weight: $fontWeightNormal;
       line-height: $lineHeight140;
 
+      @include media('<=tablet') {
+        font-size: $fontSize16;
+      }
+
       ::v-deep .bullets {
         color: $primaryColor;
       }
@@ -51,6 +74,36 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
+    flex: 51%;
+
+    @include media('<=xlargeDesktop') {
+      margin-right: 6px;
+    }
+
+    @include media('<mediumDesktop') {
+      margin-right: 4px;
+    }
+
+    @include media('<=tablet') {
+      flex: 47%;
+      gap: 16px;
+      justify-content: start;
+      margin-right: 2px;
+    }
+
+    @include media('<=smallPhone') {
+      margin-left: 2px;
+    }
+
+    &--video {
+      width: 100%;
+      height: auto;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
 
     &--video:hover {
       cursor: pointer;
@@ -60,6 +113,10 @@
       color: $bodyCopy;
       font-size: $fontSize16;
       line-height: $lineHeight130;
+
+      @include media('<=tablet') {
+        font-size: $fontSize15;
+      }
 
       ::v-deep .bold {
         font-weight: $fontWeightSemiBold;
