@@ -11,8 +11,24 @@
     display: flex;
     align-items: center;
 
+    @include media('<phone') {
+      flex-direction: column;
+      padding: 24px;
+      gap: 32px;
+    }
+
     .text {
       margin-right: 100px;
+      @include media('<=tablet') {
+        flex: 35%;
+        margin-right: 31px;
+      }
+
+      @include media('<phone') {
+        flex: 100%;
+        margin-right: 0;
+      }
+
       &__title {
         color: $primaryColor;
         font-size: $fontSize24;
@@ -25,10 +41,28 @@
         font-weight: $fontWeightNormal;
         line-height: $lineHeight135;
         margin: 16px 0 32px;
+
+        @include media('<=tablet') {
+          max-width: 220px;
+        }
+        @include media('<phone') {
+          width: 100%;
+          max-width: 100%;
+        }
       }
 
       a {
         text-decoration: none;
+
+        button{
+          @include media('<=tablet') {
+            width: 289px;
+          }
+
+          @include media('<phone') {
+            width: 100%;
+          }
+        }
         
         button {
           border-radius: 12px;
@@ -46,6 +80,22 @@
       button:hover {
         background: #b1160e;
         cursor: pointer;
+      }
+    }
+
+    .image {
+      @include media('<=tablet'){
+        flex: 45%;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      @include media('<=phone') {
+        align-self: flex-start;
+        width: 100%;
       }
     }
   }

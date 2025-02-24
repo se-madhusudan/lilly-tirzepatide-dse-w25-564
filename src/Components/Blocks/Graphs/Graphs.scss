@@ -6,12 +6,30 @@
     flex-wrap: wrap;
     gap: 24px;
 
+    @include media('<=tablet') {
+        gap: 24px 16px;
+    }
+
     .graph {
         max-width: 524px;
         border-radius: 12px;
         background: $white;
         box-shadow: $boxShadow;
         padding: 15px 22px;
+
+        @include media('<=bigTablet') {
+            padding: 15px 16px;
+            flex: 45%;
+        }
+
+        @include media('<=smallPhone') {
+            flex: 90%;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
 
         p {
             color: $primaryColor;
